@@ -47,9 +47,20 @@ double derivelox(double dy,double dx){
 ////////////Aca se hara una funcion la cual nos permita saber que pasara con el proyectil dependiendo el angulo con el que pueda ser disparado
 
 double calculitos (double angulito){
-//En primer lugar para que las cosas funcionen es necesario pasar el angulo de radianes a grados
-
+//En primer lugar para que las cosas funcionen es necesario pasar el angulo de radianes a grados y definimos cual quiero que sea mi modificacion de tiempo que en este caso sera 0.0001 ya que no se brinda una en el enunciado
+ double dt=0.0001;
  double angulitogr= ((angulito*pi)/180.0);
+//Necesitamos tener los datos del inicio y tambien de alguna condicion futura que pueda existir
+ double xf;
+ double yf;
+ double xini=0.0;
+ double yini=0.0;
+// tambien sera necesario definir las condiciones iniciales y de algun futuro para las derivadas respecto a la posicion, la inicial simplemente se encontrara mediante el uso de componentes a partir de la velocidad inicial dada en el enunciado
+ double dxf;
+ double dyf;
+ double dxini=velo*cos(angulitogr);
+ double dyini=velo*sin(angulitogr); 
+//este paso anterior nos generara 4 variables las cuales son xf,yf,dxf y dyf, para las cuales sera necesari
 }
 int main(){
 }
