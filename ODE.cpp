@@ -60,8 +60,32 @@ double calculitos (double angulito){
  double dyf;
  double dxini=velo*cos(angulitogr);
  double dyini=velo*sin(angulitogr); 
-//este paso anterior nos generara 4 variables las cuales son xf,yf,dxf y dyf, para las cuales sera necesari
+//este paso anterior nos generara 4 variables las cuales son xf,yf,dxf y dyf, para las cuales sera necesario tener claro que las pendientes iniciales de estas las vamos a asumir como cero pero saber que iran variando con el tiempo
+ double pendxf=0.0;
+ double pendyf=0.0;
+ double penddxf=0.0;
+ double penddyf=0.0;
+
+//Tambien sera necesario definir 4 variables para cada una de estas variables 
+ double var1xf=0.0;
+ double var2xf=0.0;
+ double var3xf=0.0;
+ double var4xf=0.0;
+ double var1yf=0.0;
+ double var2yf=0.0;
+ double var3yf=0.0;
+ double var4yf=0.0;
+ double var1dxf=0.0;
+ double var2dxf=0.0;
+ double var3dxf=0.0;
+ double var4dxf=0.0;
+ double var1dyf=0.0;
+ double var2dyf=0.0;
+ double var3dyf=0.0;
+ double var4dyf=0.0;
 }
+
+//
 int main(){
 }
 
