@@ -6,7 +6,7 @@ using namespace std;
 using std::cout;
 using std::cin;
 
-//Defino las variables que me brinda el enunciado de la tarea 
+//Defino las variables que me brinda el enunciado de la tarea y hacia donde redireccionare los archivos
 double c=0.2;
 double m=0.2;
 double resultini=0.0;
@@ -15,6 +15,9 @@ double velo=300.0;
 double dx;
 double dy;
 double pi=3.1416;
+ofstream datossalida("datosproyect.txt");
+ofstream datosadic("adicional.txt");
+
 
 //Es necesario crear una funcion para encontrar cual sera la derivada de la velocidad en x pero para eso necesito tener la derivada tanto en y como en x de la posicion 
 double deriy( double dy)
@@ -83,17 +86,59 @@ double calculitos (double angulito){
  double var2dyf=0.0;
  double var3dyf=0.0;
  double var4dyf=0.0;
-}
+
 /////Aca realizaremos la derivada para el unico punto que conocemos en los 4 casos 
-int i=0;
-do{
+ int i=0;
+ do{
 
- var1xf= derix(dxini);
- var1yf= derix(dyini);
- var1dxf= derix(dxini,dyini);
- var1dxf= derix(dxini,dyini);
+  var1xf= derix(dxini);
+  var1yf= derix(dyini);
+  var1dxf= derivelox(dyini,dxini);
+  var1dxf= deriveloy(dyini,dxini);
 
-//Posteriormente se
-int main(){
+//Posteriormente con forward y las diferentes variables creadas anteriormente se intentara calcular la derivada adelante utilizando la que calculamos anteriormente y asi consecutivamente hasta tener todas las variables para asi lograr hallar la pendiente de cada uno de los casos tomando los valores de las variables en x en y en dx o dy
+  var2xf= derix(dxini+0.5*dt*var1dxf); 
+  var2yf= deriy(dyini+0.5*dt*var1dyf);
+  var2dxf= derivelox(dxini+0.5*dt*var1dxf, dyini+0.5*dt*var1dyf);
+  var2dxf= deriveloy(dxini+0.5*dt*var1dxf, dyini+0.5*dt*var1dyf);
+  var3xf= derix(dxini+0.5*dt*var2dxf); 
+  var3yf= deriy(dyini+0.5*dt*var2dyf);
+  var3dxf= derivelox(dxini+0.5*dt*var2dxf, dyini+0.5*dt*var2dyf);
+  var3dxf= deriveloy(dxini+0.5*dt*var2dxf, dyini+0.5*dt*var2dyf); 
+  var4xf= derix(dxini+0.5*dt*var3dxf); 
+  var4yf= deriy(dyini+0.5*dt*var3dyf);
+  var4dxf= derivelox(dxini+0.5*dt*var3dxf, dyini+0.5*dt*var3dyf);
+  var4dxf= deriveloy(dxini+0.5*dt*var3dxf, dyini+0.5*dt*var3dyf);
+  pendxf=(1.0*var1xf+2.0*var2xf+2.0*var3xf+1.0*var4xf)/6.0;  
+  pendyf=(1.0*var1yf+2.0*var2yf+2.0*var3yf+1.0*var4yf)/6.0;
+  penddxf=(1.0*var1dxf+2.0*var2dxf+2.0*var3dxf+1.0*var4dxf)/6.0;
+  penddyf=(1.0*var1dyf+2.0*var2dyf+2.0*var3dyf+1.0*var4dyf)/6.0;   
+
+
+//Luego de hacer TOOOOOODO esto, se deben ir actualizando los pasos de las variables xf, yf, dxf y dyf a medida que avanza el tiempo mediante el uso del dt
+  xf=xini+pendxf*dt;
+  yf=yini+pendyf*dt;
+  dxf=dxini+penddxf*dt;
+  dyf=dyini+penddyf*dt;
+  datossalida<<xini<<" "<<yini<<" "<<dxini<<" "<<dyini<<endl;
+
+///Y finalmente tocaria guardar los valores de xf, yf, dxf y dyf en xini,yini,dxini y dyini y se le sumara 1 al i para que siga cambiando los valores a medida que avanza
+  xini=xf;
+  yini=yf;
+  dxini=dxf;
+  dyini=dyf;
+  i=i+1.0;
+} while(i!=0 && yini>0);
+//Despues de esto ya sabremos cual es el xf el cual representara nuestra distancia recorrida total horizontalmente
+ cout<<"La distancia total recorrida horizontalmente por el proyectil es"<<xini<<endl;
+ datosadic<<i<<endl;
+ cout<<"La trayectoria que se calcula para el proyectil a"<<angulito<<"rad"<<endl<<endl;
+datossalida.close();
+datosadic.close();
+ return xini;
+}
+
+int main(int nc, char const *argumv[]){
+	
 }
 
