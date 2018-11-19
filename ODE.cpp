@@ -84,8 +84,16 @@ double calculitos (double angulito){
  double var3dyf=0.0;
  double var4dyf=0.0;
 }
+/////Aca realizaremos la derivada para el unico punto que conocemos en los 4 casos 
+int i=0;
+do{
 
-//
+ var1xf= derix(dxini);
+ var1yf= derix(dyini);
+ var1dxf= derix(dxini,dyini);
+ var1dxf= derix(dxini,dyini);
+
+//Posteriormente se
 int main(){
 }
 
