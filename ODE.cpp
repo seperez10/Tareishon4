@@ -43,7 +43,7 @@ double derivelox(double dy,double dx){
  return resultini;
 }
 
-////////////Aca se 
+////////////Aca se hara una funcion
 int main(){
 }
 
