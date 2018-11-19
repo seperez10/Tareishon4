@@ -2,8 +2,10 @@
 #include<stdio.h>
 #include<iostream>
 #include<fstream>
+using namespace std;
 using std::cout;
 using std::cin;
+
 //Defino las variables que me brinda el enunciado de la tarea 
 double c=0.2;
 double m=0.2;
@@ -22,13 +24,26 @@ double derix( double dx)
 {
  return dx;
 }
-//En el paso anterior estan las funciones para que se puedan utilizar con facilidad las derivadas de las posiciones
-double deriveloy(double dy,double dx)
-{
- double magnitudvelo;
 
+//////En el paso anterior estan las funciones para que se puedan utilizar con facilidad las derivadas de las posiciones
+//////Primero es necesario hallar la magnitud de la velocidad simplemente con la raiz de la suma de las dos componentes elevadas al cuadrado cada una
+
+double magnitudvelo= sqrt(pow(dx,2)+pow(dy,2));
+
+double deriveloy(double dy,double dx){
+
+ resultini= -c*((pow(magnitudvelo,2)/m)*(dy/magnitudvelo));
+ cout << "magnitud" << magnitudvelo << endl;
+ return resultini;
+}
+double derivelox(double dy,double dx){
+
+ resultini= -c*((pow(magnitudvelo,2)/m)*(dx/magnitudvelo));
+
+ return resultini;
 }
 
+////////////Aca se 
 int main(){
 }
 
